@@ -9,10 +9,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	  let size = getRandomNum(sizeRangeMin, sizeRangeMax);
 	  let xPos = getRandomNum(0, xRange);
 	  let yPos = getRandomNum(-1 * yRange, yRange);
+	  let spacer = peopleItem.querySelector(".home_people_popover-spacer");
 	  
 	  peopleItem.style.translate = xPos + "rem " + yPos + "rem ";
 	  peopleItem.style.width = size + "rem";
 	  peopleItem.style.height = size + "rem";
+	  
+	  spacer.style.height = size + "rem";
 	  
   }
 });
