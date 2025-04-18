@@ -1,6 +1,34 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   randomizePeopleGrid();
+  resizeCardStack();
 });
+
+function resizeCardStack() {
+  let cardStacks = document.querySelectorAll(".home_solutions_card-stack");
+
+  for (const cardStack of cardStacks) {
+    let cards = cardStack.querySelectorAll(".home_solutions_card");
+
+    let previousHeight = 0;
+    let cumulativeOffset = 0;
+
+    for (let i = 0; i < cards.length; i++) {
+      let currentCard = cards[i];
+      let currentHeight = currentCard.offsetHeight;
+
+      if (previousHeight == 0) {
+        previousHeight = currentHeight;
+        continue;
+      } else {
+        let heightDiff = previousHeight - currentHeight;
+        let topOffset = heightDiff + cumulativeOffset + remToPx(6);
+        currentCard.style.top = topOffset + "px";
+        cumulativeOffset = topOffset;
+        previousHeight = currentHeight;
+      }
+    }
+  }
+}
 
 function randomizePeopleGrid() {
   let peopleItems = document.querySelectorAll(
@@ -27,4 +55,11 @@ function randomizePeopleGrid() {
 
 function getRandomNum(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function remToPx(rem) {
+  const rootFontSize = parseFloat(
+    getComputedStyle(document.documentElement).fontSize,
+  );
+  return rem * rootFontSize;
 }
