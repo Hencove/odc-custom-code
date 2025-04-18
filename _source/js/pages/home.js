@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   resizeCardStack();
 });
 
+window.addEventListener("resize", debounce(onResize, 200)); // 200ms debounce
+
 function resizeCardStack() {
   let cardStacks = document.querySelectorAll(".home_solutions_card-stack");
 
@@ -53,6 +55,10 @@ function randomizePeopleGrid() {
   }
 }
 
+function onResize() {
+  resizeCardStack();
+}
+
 function getRandomNum(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -62,4 +68,12 @@ function remToPx(rem) {
     getComputedStyle(document.documentElement).fontSize,
   );
   return rem * rootFontSize;
+}
+
+function debounce(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
 }
