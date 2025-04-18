@@ -1,0 +1,22 @@
+{
+  "name": "odc-custom-code",
+  "version": "1.0.0",
+  "description": "Repository for custom code to be inserted into the ODC Webflow site. In initial development, this will be linked to directly, but will be inserted directly into Webflow for production.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hencove/odc-custom-code.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hencove/odc-custom-code/issues"
+  },
+  "homepage": "https://github.com/Hencove/odc-custom-code#readme",
+  "devDependencies": {
+    "prettier": "3.5.3"
+  }
+}
